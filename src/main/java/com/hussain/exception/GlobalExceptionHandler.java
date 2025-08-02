@@ -39,12 +39,14 @@ public class GlobalExceptionHandler implements Constant {
             errorResponse.put("status", HttpStatus.TOO_MANY_REQUESTS);
             errorResponse.put("code", HttpStatus.TOO_MANY_REQUESTS.value());
             errorResponse.put(MESSAGE, OPEN_API_QUOTA_EXCEEDED);
-            OpenAPIErrorResponse openAPIErrorResponse = new ObjectMapper().readValue(ex.getMessage().replaceAll("HTTP 429 - ", ""), OpenAPIErrorResponse.class);
+            log.info("Error Response from OpenAPI {}", ex.getMessage());
+            String substring = ex.getMessage().substring(ex.getMessage().indexOf("- ") + 1);
+            OpenAPIErrorResponse openAPIErrorResponse = new ObjectMapper().readValue(substring, OpenAPIErrorResponse.class);
             if (openAPIErrorResponse != null && openAPIErrorResponse.getError() != null && StringUtils.hasText(openAPIErrorResponse.getError().getMessage())) {
                 errorResponse.put(MESSAGE, openAPIErrorResponse.getError().getMessage());
             }
         } catch (Exception exception) {
-            log.error("Exception occurred while constructing OpenAPI error response");
+            log.error("some error occurred while preparing response");
         }
         return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body(errorResponse);
     }

@@ -1,0 +1,44 @@
+target/
+.mvn/
+coinzoom-accounts/fileupload/
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.log
+**/logfiles
+**/logs
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+**/logfiles
+**/logs
+cz-exchange/cz-exchange-deps/data
+cz-exchange/cz-exchange-deps/redis
+cz-exchange/cz-exchange-deps/redis-ps
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+**/logfiles
+**/logs
+
+/.metadata/
+/.project
+/.recommenders/
+/Servers/
+.gradle/
+bin/
+cz-exchange/cz-exchange-deps/data
+cz-exchange/cz-exchange-deps/redis
+cz-exchange/cz-exchange-deps/redis-ps
+nohup.out
